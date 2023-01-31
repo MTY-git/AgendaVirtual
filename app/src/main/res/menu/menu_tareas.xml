@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/tareas_urgentes"
+        android:icon="@drawable/warning_png_free_image"
+        android:title="@string/ver_tareas_urgentes"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/tareas_semana"
+        android:icon="@drawable/png_pulgar_arriba"
+        android:title="@string/ver_tareas_de_la_semana"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/tareas_sinFecha"
+        android:icon="@drawable/success"
+        android:title="@string/ver_tareas_sin_fecha_de_entrega"
+        app:showAsAction="ifRoom" />
+
+</menu>

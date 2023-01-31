@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1006550872783",
+    "project_id": "osc-agenda-virtual",
+    "storage_bucket": "osc-agenda-virtual.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006550872783:android:ebaaf2e162becd23d17dba",
+        "android_client_info": {
+          "package_name": "com.oscarsainz.agenda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1006550872783-2pa4advvgfrqitg22qc5krqles1s8o6k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oscarsainz.agenda",
+            "certificate_hash": "31738d93ea9f4ed8a0e8f3bebd9e4e6e1b4629dc"
+          }
+        },
+        {
+          "client_id": "1006550872783-8lomuj08836uvha2h71eln6pv8ndp17b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCc_S_tf5pfAzVM9Rn8Y0wjf-mlv2_-2Uk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1006550872783-8lomuj08836uvha2h71eln6pv8ndp17b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

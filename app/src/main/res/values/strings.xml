@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Agenda Virtual</string>
+    <string name="Asignaturas">Asignaturas</string>
+    <string name="boton_para_anyadir_asignaturas">Boton para anyadir asignaturas</string>
+    <string name="usuario">Usuario</string>
+    <string name="contrasenya">Contraseña</string>
+    <string name="iniciar_sesion">Iniciar sesion</string>
+    <string name="login">Login</string>
+    <string name="nombre_de_la_asignatura">Nombre de la Asignatura</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="tareas">Tareas</string>
+    <string name="boton_para_anyadir_tareas">boton para añadir tareas</string>
+    <string name="nombre_de_la_tarea">Nombre de la tarea</string>
+    <string name="descripcion_de_la_tarea">Descripción de la tarea</string>
+    <string name="fecha_de_entrega">Fecha de entrega</string>
+    <string name="ver_tareas_urgentes">Ver tareas urgentes</string>
+    <string name="ver_tareas_de_la_semana">Ver tareas de la semana</string>
+    <string name="ver_tareas_sin_fecha_de_entrega">Ver tareas sin fecha de entrega</string>
+    <string name="e_mail">E-mail</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="acceder">Acceder</string>
+    <string name="google">Google</string>
+    <string name="prefs_file">com.oscarsainz.agenda.PREFERENCE_FILE</string>
+    <string name="cerrar_sesion">Cerrar sesion</string>
+    <string name="elige_el_nombre_de_la_asignatura">Elige el nombre de la asignatura</string>
+    <string name="agregar">Agregar</string>
+</resources>
