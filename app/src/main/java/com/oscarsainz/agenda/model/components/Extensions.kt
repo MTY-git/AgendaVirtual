@@ -1,8 +1,10 @@
-package com.oscarsainz.agenda
+package com.oscarsainz.agenda.model.components
 
 import android.content.Context
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+
+
 
 
 fun Context.toast(text: String, duration: Int = Toast.LENGTH_LONG) {

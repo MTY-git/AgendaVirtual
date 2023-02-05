@@ -1,18 +1,18 @@
-package com.oscarsainz.agenda
+package com.oscarsainz.agenda.UI
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthCredential
 import com.google.firebase.auth.GoogleAuthProvider
+import com.oscarsainz.agenda.R
+import com.oscarsainz.agenda.model.components.showErrorAlert
+import com.oscarsainz.agenda.model.components.toast
 import com.oscarsainz.agenda.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -55,6 +55,7 @@ class LoginActivity : AppCompatActivity() {
     private fun setup() { //Funcionalidad de botones
 
         binding.apply {
+
             buttonRegistrarse.setOnClickListener {
                 if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()) {
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(

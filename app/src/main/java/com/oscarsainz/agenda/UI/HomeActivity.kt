@@ -1,16 +1,22 @@
-package com.oscarsainz.agenda
+package com.oscarsainz.agenda.UI
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBar
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import com.oscarsainz.agenda.databinding.ActivityAsignaturasBinding
-import com.oscarsainz.agenda.databinding.ActivityLoginBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.oscarsainz.agenda.R
+import com.oscarsainz.agenda.model.bd.DbFirestore
+import com.oscarsainz.agenda.model.components.AsignaturaDialog
+import com.oscarsainz.agenda.model.Asignatura
+import com.oscarsainz.agenda.model.Usuario
+import kotlinx.coroutines.launch
 
-private lateinit var binding: ActivityAsignaturasBinding
 
 enum class ProviderType{
     BASIC,
@@ -18,10 +24,11 @@ enum class ProviderType{
 }
 
 class HomeActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAsignaturasBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_home)
 
         //Recuperación de parametros (extras) del loginActivity
         val bundle = intent.extras
@@ -34,10 +41,12 @@ class HomeActivity : AppCompatActivity() {
         prefs.putString("provider",provider)
         prefs.apply()
 
+        //Guardando usuario en base de datos
+        val user = Usuario(email!!,provider!!)
+        DbFirestore.añadirUsuario(user)
+
 
     }
-
-
 
 
     private fun logOut() {

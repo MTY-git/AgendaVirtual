@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/asignaturaFragment">
+
+    <fragment
+        android:id="@+id/asignaturaFragment"
+        android:name="com.oscarsainz.agenda.UI.asignaturas.AsignaturaFragment"
+        android:label="AsignaturaFragment" >
+        <action
+            android:id="@+id/asig_to_tarea"
+            app:destination="@id/tareaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tareaFragment"
+        android:name="com.oscarsainz.agenda.UI.tareas.TareaFragment"
+        android:label="TareaFragment" />
+</navigation>

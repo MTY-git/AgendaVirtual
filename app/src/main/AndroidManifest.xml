@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Agenda"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
+            android:name=".UI.LoginActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -26,7 +26,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".UI.HomeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
