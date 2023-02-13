@@ -1,6 +1,9 @@
-package com.oscarsainz.agenda.UI.asignaturas
+package com.oscarsainz.agenda.ui.asignaturas
 
+import android.content.Context
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
@@ -16,6 +19,7 @@ import com.oscarsainz.agenda.model.bd.DbFirestore
 import com.oscarsainz.agenda.model.components.AsignaturaDialog
 import com.oscarsainz.agenda.databinding.FragAsignaturasBinding
 import com.oscarsainz.agenda.model.Asignatura
+import com.oscarsainz.agenda.ui.tareas.TareaFragment
 import kotlinx.coroutines.launch
 
 class AsignaturaFragment : Fragment(R.layout.frag_asignaturas) {
@@ -26,51 +30,44 @@ class AsignaturaFragment : Fragment(R.layout.frag_asignaturas) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding = FragAsignaturasBinding.bind(view).apply {
-            recyclerView.adapter = adapter
-        }
-
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.Asignaturas)
 
         val emailUser = FirebaseAuth.getInstance().currentUser?.email.toString()
+
+        binding = FragAsignaturasBinding.bind(view)
+        binding.recyclerView.adapter = adapter
 
         binding.floatingActionButton.setOnClickListener {
 
             AsignaturaDialog(
-
                 onSubmitClickListener = { nombre ->
-
                     if(nombre.isEmpty()){
-
-                    }else{
-                        DbFirestore.añadirAsignatura( emailUser , Asignatura(nombre) )
+                        viewModel.añadirAsignatura( emailUser , Asignatura(nombre) )
                     }
                 }
-            ).show(requireFragmentManager() , "Asignatura Dialog")
+            ).show(requireFragmentManager() , "Dialogo Asignatura")
         }
 
-        binding.recyclerView.adapter = adapter
-
         viewModel.state.observe(viewLifecycleOwner){state ->
-
-            //GET || LIVEDATA
-
-            /*state.asignaturas?.let {
-                adapter.asignaturas = state.asignaturas
-                adapter.notifyDataSetChanged()
-            }*/
-            //FLOW
 
             lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
                     state.asignaturas?.collect() {
-                        adapter.asignaturas = DbFirestore.getAll(emailUser)
+                        adapter.asignaturas = it
                         adapter.notifyDataSetChanged()
                     }
                 }
             }
+
+            state.navigateTo?.let {
+                findNavController().navigate(
+                    R.id.asig_to_tarea,
+                    //bundleOf(TareaFragment.EXTRA_ASIGNATURA to it)
+                )
+                viewModel.onNavigateDone()
+            }
         }
+
 
 
     }

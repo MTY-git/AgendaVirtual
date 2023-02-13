@@ -1,4 +1,4 @@
-package com.oscarsainz.agenda.UI.asignaturas
+package com.oscarsainz.agenda.ui.asignaturas
 
 import androidx.lifecycle.*
 import com.google.firebase.auth.FirebaseAuth
@@ -15,30 +15,11 @@ class MainViewModel(): ViewModel() {
     private val emailUser = FirebaseAuth.getInstance().currentUser?.email.toString()
 
 
-
     init {
 
-        //FLOW
         _state.value = _state.value?.copy( asignaturas = DbFirestore.getFlow(emailUser))
 
-        /*
-        //LIVEDATA
-        viewModelScope.launch(Dispatchers.Main) {
-
-            DbFirestore.getAllObservable(emailUser).observeForever {
-                _state.value = _state.value?.copy(asignaturas = it)
-            }
-
-        }
-
-        //GET
-        viewModelScope.launch(Dispatchers.Main) {
-            _state.value = _state.value?.copy( asignaturas = requestMovies())
-        }
-        */
     }
-
-    private suspend fun requestMovies(): List<Asignatura>  = DbFirestore.getAll(emailUser)
 
 
     fun navigateTo(asignatura: Asignatura) {
@@ -49,8 +30,16 @@ class MainViewModel(): ViewModel() {
         _state.value = _state.value?.copy(navigateTo = null)
     }
 
+    fun añadirAsignatura( emailUser:String , asignatura : Asignatura ){
+        viewModelScope.launch(Dispatchers.IO) {
+            DbFirestore.añadirAsignatura(emailUser, asignatura )
+        }
+    }
+
+
+
     data class UiState(
-        //val asignaturas: List<Asignatura>? = null,
+
         val asignaturas: Flow<List<Asignatura>>? = null,
         val navigateTo: Asignatura? = null,
     )

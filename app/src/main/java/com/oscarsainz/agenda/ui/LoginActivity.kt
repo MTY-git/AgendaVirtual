@@ -1,4 +1,4 @@
-package com.oscarsainz.agenda.UI
+package com.oscarsainz.agenda.ui
 
 import android.content.Context
 import android.content.Intent
@@ -32,27 +32,19 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    override fun onStart() {
-        super.onStart()
-        binding.loginLayout.visibility = View.VISIBLE
-    }
-
-    private fun session(){ //Comprobar que ya está iniciada la sesion para recordar al usuario
+    private fun session(){
 
         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
         val email = prefs.getString("email",null)
         val provider = prefs.getString("provider",null)
 
         if(email != null && provider != null){
-            binding.loginLayout.visibility = View.INVISIBLE
-            //Ocultar el layout del login
-            // para no verlo al iniciar la app cuando la sesion se recuerde
             showHome(email, ProviderType.valueOf(provider))
         }
 
     }
 
-    private fun setup() { //Funcionalidad de botones
+    private fun setup() {
 
         binding.apply {
 

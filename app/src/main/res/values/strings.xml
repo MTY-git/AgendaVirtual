@@ -24,4 +24,5 @@
     <string name="cerrar_sesion">Cerrar sesion</string>
     <string name="elige_el_nombre_de_la_asignatura">Elige el nombre de la asignatura</string>
     <string name="agregar">Agregar</string>
+    <string name="nombre_asignatura">Nombre Asignatura</string>
 </resources>

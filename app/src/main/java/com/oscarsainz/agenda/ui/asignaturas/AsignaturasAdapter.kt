@@ -1,12 +1,14 @@
-package com.oscarsainz.agenda.UI.asignaturas
+package com.oscarsainz.agenda.ui.asignaturas
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.oscarsainz.agenda.R
 import com.oscarsainz.agenda.model.Asignatura
 import com.oscarsainz.agenda.databinding.ElemAsignaturaBinding
+import kotlinx.coroutines.withContext
 
 class AsignaturasAdapter(val listener: (Asignatura) -> Unit) :
 
@@ -29,6 +31,7 @@ class AsignaturasAdapter(val listener: (Asignatura) -> Unit) :
         holder.itemView.setOnClickListener {
             listener(asignatura)
         }
+        
     }
 
     override fun getItemCount(): Int = asignaturas.size

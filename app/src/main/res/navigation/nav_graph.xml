@@ -7,14 +7,19 @@
 
     <fragment
         android:id="@+id/asignaturaFragment"
-        android:name="com.oscarsainz.agenda.UI.asignaturas.AsignaturaFragment"
-        android:label="AsignaturaFragment" >
+        android:name="com.oscarsainz.agenda.ui.asignaturas.AsignaturaFragment"
+        android:label="AsignaturaFragment">
         <action
             android:id="@+id/asig_to_tarea"
-            app:destination="@id/tareaFragment" />
+            app:destination="@id/tareaFragment"
+            app:popUpTo="@id/asignaturaFragment"
+            app:popEnterAnim="@anim/slide_right_in"
+            app:popExitAnim="@anim/slide_right_out"
+            app:enterAnim="@anim/slide_left_in"
+            app:exitAnim="@anim/slide_left_out" />
     </fragment>
     <fragment
         android:id="@+id/tareaFragment"
-        android:name="com.oscarsainz.agenda.UI.tareas.TareaFragment"
+        android:name="com.oscarsainz.agenda.ui.tareas.TareaFragment"
         android:label="TareaFragment" />
 </navigation>

@@ -1,21 +1,14 @@
-package com.oscarsainz.agenda.UI
+package com.oscarsainz.agenda.ui
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.oscarsainz.agenda.R
 import com.oscarsainz.agenda.model.bd.DbFirestore
-import com.oscarsainz.agenda.model.components.AsignaturaDialog
-import com.oscarsainz.agenda.model.Asignatura
-import com.oscarsainz.agenda.model.Usuario
-import kotlinx.coroutines.launch
 
 
 enum class ProviderType{
@@ -42,8 +35,7 @@ class HomeActivity : AppCompatActivity() {
         prefs.apply()
 
         //Guardando usuario en base de datos
-        val user = Usuario(email!!,provider!!)
-        DbFirestore.añadirUsuario(user)
+        DbFirestore.añadirUsuario(email!!,provider!!)
 
 
     }
@@ -54,7 +46,8 @@ class HomeActivity : AppCompatActivity() {
         prefs.clear()
         prefs.apply()
         FirebaseAuth.getInstance().signOut()
-        onBackPressed()
+        val loginIntent = Intent(this, LoginActivity::class.java)
+        startActivity(loginIntent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
