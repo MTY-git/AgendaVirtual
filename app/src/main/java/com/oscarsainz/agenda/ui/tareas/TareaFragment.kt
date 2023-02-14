@@ -13,9 +13,11 @@ class TareaFragment : Fragment(R.layout.frag_tareas) {
         const val EXTRA_ASIGNATURA = "TareaFragment:Asignatura"
     }
 
+    private lateinit var binding: FragTareasBinding
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragTareasBinding.bind(view)
+        binding = FragTareasBinding.bind(view)
 
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Tareas"
 
