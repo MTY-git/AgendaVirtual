@@ -36,6 +36,12 @@ class MainViewModel(): ViewModel() {
         }
     }
 
+    fun borrarAsignatura( emailUser:String , asignatura : Asignatura ){
+        viewModelScope.launch(Dispatchers.IO) {
+            DbFirestore.borrarAsignatura(emailUser, asignatura )
+        }
+    }
+
 
 
     data class UiState(

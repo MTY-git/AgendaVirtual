@@ -3,7 +3,6 @@ package com.oscarsainz.agenda.model.bd
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.snapshots
 import com.oscarsainz.agenda.model.Asignatura
-import com.oscarsainz.agenda.ui.ProviderType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -24,6 +23,11 @@ object DbFirestore {
         db.collection("users/${emailUser}/asignaturas")
             .document(asignatura.nombre)
             .set(hashMapOf("nombre" to asignatura.nombre))
+    }
+
+    fun borrarAsignatura(emailUser: String, asignatura: Asignatura) {
+        db.collection("users/${emailUser}/asignaturas")
+            .document(asignatura.nombre).delete()
     }
 
 
