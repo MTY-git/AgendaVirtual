@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.oscarsainz.agenda.R
 import com.oscarsainz.agenda.databinding.ElemAsignaturaBinding
-import com.oscarsainz.agenda.model.Asignatura
+import com.oscarsainz.agenda.model.data.Asignatura
 
 
 class AsignaturasAdapter(val listener: (Asignatura) -> Unit) :

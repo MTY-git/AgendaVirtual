@@ -3,12 +3,12 @@ package com.oscarsainz.agenda.ui.asignaturas
 import androidx.lifecycle.*
 import com.google.firebase.auth.FirebaseAuth
 import com.oscarsainz.agenda.model.bd.DbFirestore
-import com.oscarsainz.agenda.model.Asignatura
+import com.oscarsainz.agenda.model.data.Asignatura
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class MainViewModel(): ViewModel() {
+class AsignaturaViewModel(): ViewModel() {
 
     private val _state = MutableLiveData(UiState())
     val state: LiveData<UiState> get() = _state
@@ -30,13 +30,13 @@ class MainViewModel(): ViewModel() {
         _state.value = _state.value?.copy(navigateTo = null)
     }
 
-    fun añadirAsignatura( emailUser:String , asignatura : Asignatura ){
+    fun añadirAsignatura( emailUser:String , asignatura : Asignatura){
         viewModelScope.launch(Dispatchers.IO) {
             DbFirestore.añadirAsignatura(emailUser, asignatura )
         }
     }
 
-    fun borrarAsignatura( emailUser:String , asignatura : Asignatura ){
+    fun borrarAsignatura( emailUser:String , asignatura : Asignatura){
         viewModelScope.launch(Dispatchers.IO) {
             DbFirestore.borrarAsignatura(emailUser, asignatura )
         }

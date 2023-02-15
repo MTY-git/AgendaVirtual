@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.oscarsainz.agenda.R
 import com.oscarsainz.agenda.databinding.FragAsignaturasBinding
-import com.oscarsainz.agenda.model.Asignatura
+import com.oscarsainz.agenda.model.data.Asignatura
 import com.oscarsainz.agenda.model.components.AsignaturaDialog
 import com.oscarsainz.agenda.model.components.SwipeToDeleteCallback
 import com.oscarsainz.agenda.ui.tareas.TareaFragment
@@ -23,18 +23,16 @@ import kotlinx.coroutines.launch
 
 class AsignaturaFragment : Fragment(R.layout.frag_asignaturas) {
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: AsignaturaViewModel by viewModels()
     private lateinit var binding: FragAsignaturasBinding
     private val adapter = AsignaturasAdapter(){ asig -> viewModel.navigateTo(asig)}
-
+    private val emailUser = FirebaseAuth.getInstance().currentUser?.email.toString()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.Asignaturas)
-
         binding = FragAsignaturasBinding.bind(view)
 
-        val emailUser = FirebaseAuth.getInstance().currentUser?.email.toString()
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.Asignaturas)
 
         binding.recyclerView.adapter = adapter
 
@@ -42,23 +40,21 @@ class AsignaturaFragment : Fragment(R.layout.frag_asignaturas) {
         binding.floatingActionButton.setOnClickListener {
 
             AsignaturaDialog(
-                onSubmitClickListener = { nombre ->
-                    if(nombre.isNotBlank()){
-                        viewModel.añadirAsignatura( emailUser , Asignatura(nombre) )
-                    }
+                onSubmitClickListener = {
+                    viewModel.añadirAsignatura( emailUser , it )
                 }
             ).show(requireFragmentManager() , "Dialogo Asignatura")
         }
 
 
-        val swipetoDeleteCallback = object : SwipeToDeleteCallback(requireContext()){
+        val swipeToDeleteCallback = object : SwipeToDeleteCallback(requireContext()){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val nombre = adapter.asignaturas[position].nombre
                 viewModel.borrarAsignatura( emailUser , Asignatura(nombre) )
             }
         }
-        val itemTouchHelper = ItemTouchHelper(swipetoDeleteCallback)
+        val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(binding.recyclerView)
 
 
@@ -76,7 +72,7 @@ class AsignaturaFragment : Fragment(R.layout.frag_asignaturas) {
             state.navigateTo?.let {
                 findNavController().navigate(
                     R.id.asig_to_tarea,
-                    //bundleOf(TareaFragment.EXTRA_ASIGNATURA to it)
+                    bundleOf(TareaFragment.EXTRA_ASIGNATURA to it)
                 )
                 viewModel.onNavigateDone()
             }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Agenda Virtual</string>
     <string name="Asignaturas">Asignaturas</string>
-    <string name="boton_para_anyadir_asignaturas">Boton para anyadir asignaturas</string>
+    <string name="boton_para_añadir_asignaturas">Boton para añadir asignaturas</string>
     <string name="usuario">Usuario</string>
     <string name="contrasenya">Contraseña</string>
     <string name="iniciar_sesion">Iniciar sesion</string>
@@ -25,4 +25,7 @@
     <string name="elige_el_nombre_de_la_asignatura">Elige el nombre de la asignatura</string>
     <string name="agregar">Agregar</string>
     <string name="nombre_asignatura">Nombre Asignatura</string>
+    <string name="datos_tarea">Datos Tarea</string>
+    <string name="descripci_n_de_la_tarea">descripción de la tarea</string>
+    <string name="nombre_tarea">Nombre de la tarea</string>
 </resources>
