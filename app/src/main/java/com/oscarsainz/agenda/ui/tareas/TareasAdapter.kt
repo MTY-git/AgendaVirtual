@@ -1,6 +1,8 @@
 package com.oscarsainz.agenda.ui.tareas
 
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,9 +43,16 @@ class TareasAdapter(val listener: (Tarea) -> Unit) :
 
         private val binding = ElemTareaBinding.bind(view)
 
+        @SuppressLint("SetTextI18n")
         fun bind(tarea : Tarea){
+            if(tarea.completada){
+                binding.cardTarea.setCardBackgroundColor(Color.LTGRAY)
+            }
             binding.nombreTarea.text = tarea.nombre
-            binding.fecha.text = tarea.fechaEntrega.toString()
+            binding.fecha.text = "${tarea.fechaEntrega?.date}/" +
+                                 "${tarea.fechaEntrega?.month?.plus(1)}/" +
+                                 "${tarea.fechaEntrega?.year?.plus(1900)}"
+
         }
     }
 }

@@ -19,7 +19,6 @@ import com.oscarsainz.agenda.model.components.SwipeToDeleteCallback
 import com.oscarsainz.agenda.model.data.Asignatura
 import com.oscarsainz.agenda.model.components.TareaDialog
 import com.oscarsainz.agenda.model.data.Tarea
-import com.oscarsainz.agenda.ui.asignaturas.AsignaturasAdapter
 import com.oscarsainz.agenda.ui.tareas.DetailTareaFragment.Companion.EXTRA_TAREA
 import kotlinx.coroutines.launch
 
@@ -30,7 +29,7 @@ class TareaFragment : Fragment(R.layout.frag_tareas) {
     }
 
     private  val viewModel : TareaViewModel by viewModels(){
-        DetailViewModelFactory(arguments?.getParcelable<Asignatura>(EXTRA_ASIGNATURA)!!)
+        TareaViewModelFactory(arguments?.getParcelable<Asignatura>(EXTRA_ASIGNATURA)!!)
     }
 
     private lateinit var binding: FragTareasBinding
@@ -41,6 +40,7 @@ class TareaFragment : Fragment(R.layout.frag_tareas) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragTareasBinding.bind(view)
+
         val asignatura = arguments?.getParcelable<Asignatura>(EXTRA_ASIGNATURA)!!
         (requireActivity() as AppCompatActivity).supportActionBar?.title = asignatura.nombre
 
@@ -79,7 +79,8 @@ class TareaFragment : Fragment(R.layout.frag_tareas) {
             state.navigateTo?.let {
                 findNavController().navigate(
                     R.id.tarea_to_detail,
-                    bundleOf(EXTRA_TAREA to it)
+                    bundleOf(EXTRA_TAREA to it , DetailTareaFragment.EXTRA_ASIGNATURA to asignatura)
+
                 )
                 viewModel.onNavigateDone()
             }

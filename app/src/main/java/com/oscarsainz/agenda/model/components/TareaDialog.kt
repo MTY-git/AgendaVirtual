@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -15,7 +16,7 @@ import java.util.*
 
 
 class TareaDialog(
-    private val onSubmitClickListener: (Tarea) -> Unit
+    private val onSubmitClickListener: (Tarea) -> Unit,
 
 ) : DialogFragment() {
 
@@ -34,9 +35,9 @@ class TareaDialog(
                 if (inputNombreDialogo.text!!.isNotBlank() and inputDescripcionDialogo.text!!.isNotBlank()) {
                     onSubmitClickListener.invoke(
                         Tarea(
-                            nombre = inputNombreDialogo.text.toString(),
-                            descripcion = inputDescripcionDialogo.text.toString(),
-                            fechaEntrega = "${inputFechaDialogo.dayOfMonth}-${inputFechaDialogo.month + 1}-${inputFechaDialogo.year}"
+                            inputNombreDialogo.text.toString(),
+                            inputDescripcionDialogo.text.toString(),
+                            Date(inputFechaDialogo.year-1900,inputFechaDialogo.month,inputFechaDialogo.dayOfMonth)
                         )
                     )
                     dismiss()

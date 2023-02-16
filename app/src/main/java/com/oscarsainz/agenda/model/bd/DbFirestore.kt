@@ -33,17 +33,38 @@ object DbFirestore {
 
     fun añadirTarea(emailUser: String , asignatura: Asignatura , tarea: Tarea) {
         db.collection("users/${emailUser}/asignaturas/${asignatura.nombre}/tareas")
-            .document(tarea.nombre)
-            .set(hashMapOf(
-                "nombre" to tarea.nombre ,
-                "descripcion" to tarea.descripcion ,
-                "fechaEntrega" to tarea.fechaEntrega))
+            .add(tarea)
     }
 
     fun borrarTarea(emailUser: String, asignatura: Asignatura , tarea: Tarea) {
         db.collection("users/${emailUser}/asignaturas/${asignatura.nombre}/tareas")
-            .document(tarea.nombre).delete()
+            .whereEqualTo("nombre" , tarea.nombre)
+            .get()
+            .addOnCompleteListener {
+                val id = it.result.first().id
+                db.collection("users/${emailUser}/asignaturas/${asignatura.nombre}/tareas")
+                    .document(id)
+                    .delete()
+            }
     }
+
+    fun modificarTarea(emailUser: String, asignatura: Asignatura , tareaAntigua: Tarea , tarea: Tarea) {
+        db.collection("users/${emailUser}/asignaturas/${asignatura.nombre}/tareas")
+            .whereEqualTo("nombre" , tareaAntigua.nombre)
+            .get()
+            .addOnCompleteListener {
+                val id = it.result.first().id
+                db.collection("users/${emailUser}/asignaturas/${asignatura.nombre}/tareas")
+                    .document(id)
+                    .update("nombre" , tarea.nombre
+                        , "descripcion" , tarea.descripcion
+                        , "fechaEntrega", tarea.fechaEntrega
+                        , "completada",tarea.completada)
+            }
+    }
+
+
+
 
     fun getFlow(emailUser: String): Flow<List<Asignatura>> {
         return db.collection("users/${emailUser}/asignaturas")

@@ -40,7 +40,6 @@
         android:clickable="true"
         android:contentDescription="@string/boton_para_anyadir_tareas"
         android:focusable="true"
-        app:backgroundTint="@color/green_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add"
