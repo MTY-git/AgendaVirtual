@@ -70,10 +70,10 @@ class AsignaturaFragment : Fragment(R.layout.frag_asignaturas) {
             }
 
             state.navigateTo?.let {
-                findNavController().navigate(
-                    R.id.asig_to_tarea,
-                    bundleOf(TareaFragment.EXTRA_ASIGNATURA to it)
-                )
+                    findNavController().navigate(
+                        R.id.asig_to_tarea,
+                        bundleOf(TareaFragment.EXTRA_ASIGNATURA to it)
+                    )
                 viewModel.onNavigateDone()
             }
         }

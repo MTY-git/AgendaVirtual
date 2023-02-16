@@ -28,4 +28,6 @@
     <string name="datos_tarea">Datos Tarea</string>
     <string name="descripci_n_de_la_tarea">descripción de la tarea</string>
     <string name="nombre_tarea">Nombre de la tarea</string>
+    <string name="completada">Completada</string>
+    <string name="modificacionCompletada">Modificación realizada, vuelve atrás para ver los cambios</string>
 </resources>

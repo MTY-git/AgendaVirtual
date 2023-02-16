@@ -54,7 +54,7 @@ class TareaViewModel(asignatura: Asignatura): ViewModel() {
 }
 
 @Suppress("UNCHECKED_CAST")
-class DetailViewModelFactory(private val asignatura: Asignatura): ViewModelProvider.Factory{
+class TareaViewModelFactory(private val asignatura: Asignatura): ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return TareaViewModel(asignatura) as T
     }
