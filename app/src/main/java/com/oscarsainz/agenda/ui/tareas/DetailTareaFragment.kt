@@ -12,6 +12,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.oscarsainz.agenda.R
+import com.oscarsainz.agenda.databinding.ActivityHomeBinding.bind
+import com.oscarsainz.agenda.databinding.DialogTareaBinding
 import com.oscarsainz.agenda.databinding.FragTareasDetailBinding
 import com.oscarsainz.agenda.model.components.TareaDialog
 import com.oscarsainz.agenda.model.data.Asignatura
@@ -31,6 +33,7 @@ class DetailTareaFragment : Fragment(R.layout.frag_tareas_detail) {
     private val emailUser = FirebaseAuth.getInstance().currentUser?.email.toString()
 
     private lateinit var binding: FragTareasDetailBinding
+    //private lateinit var bindingDialog: DialogTareaBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,6 +51,8 @@ class DetailTareaFragment : Fragment(R.layout.frag_tareas_detail) {
         }
 
         binding.floatingActionButton3.setOnClickListener {
+            //bindingDialog = DialogTareaBinding.bind()
+            //bindingDialog.botonAgregarDialogo.text = "Modificar"
             TareaDialog(
                 onSubmitClickListener = {
                     viewModel.modificarTarea(emailUser , asignatura ,tarea, it)

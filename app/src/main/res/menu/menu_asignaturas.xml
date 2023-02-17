@@ -2,6 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item android:id="@+id/cambiarTema"
+        android:icon="@drawable/dia_y_noche"
+        android:title="@string/cambiar_tema"
+        app:showAsAction="always"/>
+
     <item android:id="@+id/cerrarSesion"
         android:icon="@drawable/log_out"
         android:title="@string/cerrar_sesion"

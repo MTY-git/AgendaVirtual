@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import com.google.firebase.auth.FirebaseAuth
 import com.oscarsainz.agenda.R
 import com.oscarsainz.agenda.model.bd.DbFirestore
@@ -47,6 +49,7 @@ class HomeActivity : AppCompatActivity() {
         prefs.apply()
         FirebaseAuth.getInstance().signOut()
         val loginIntent = Intent(this, LoginActivity::class.java)
+        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(loginIntent)
     }
 
@@ -58,6 +61,16 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.cerrarSesion -> logOut()
+            R.id.cambiarTema -> {
+                val nightMode = AppCompatDelegate.getDefaultNightMode()
+
+                if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                }
+            }
+
         }
         return super.onOptionsItemSelected(item)
     }

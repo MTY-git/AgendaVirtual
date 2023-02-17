@@ -30,4 +30,7 @@
     <string name="nombre_tarea">Nombre de la tarea</string>
     <string name="completada">Completada</string>
     <string name="modificacionCompletada">Modificación realizada, vuelve atrás para ver los cambios</string>
+    <string name="cambiar_tema">Cambiar tema</string>
+    <string name="sin_entregar">Sin Entregar</string>
+    <string name="entegada">Entegada</string>
 </resources>
