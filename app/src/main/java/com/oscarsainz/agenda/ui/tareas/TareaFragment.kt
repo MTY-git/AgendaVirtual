@@ -19,7 +19,8 @@ import com.oscarsainz.agenda.model.components.SwipeToDeleteCallback
 import com.oscarsainz.agenda.model.data.Asignatura
 import com.oscarsainz.agenda.model.components.TareaDialog
 import com.oscarsainz.agenda.model.data.Tarea
-import com.oscarsainz.agenda.ui.tareas.DetailTareaFragment.Companion.EXTRA_TAREA
+import com.oscarsainz.agenda.ui.tareas.detail.DetailTareaFragment
+import com.oscarsainz.agenda.ui.tareas.detail.DetailTareaFragment.Companion.EXTRA_TAREA
 import kotlinx.coroutines.launch
 
 class TareaFragment : Fragment(R.layout.frag_tareas) {
@@ -48,6 +49,8 @@ class TareaFragment : Fragment(R.layout.frag_tareas) {
 
         binding.floatingActionButton2.setOnClickListener {
             TareaDialog(
+                "añadir",
+                Tarea(),
                 onSubmitClickListener = {
                     viewModel.añadirTarea(emailUser , asignatura , it)
                 }

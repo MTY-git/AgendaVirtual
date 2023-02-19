@@ -1,23 +1,21 @@
-package com.oscarsainz.agenda.ui.tareas
+package com.oscarsainz.agenda.ui.tareas.detail
+
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.oscarsainz.agenda.R
-import com.oscarsainz.agenda.databinding.ActivityHomeBinding.bind
-import com.oscarsainz.agenda.databinding.DialogTareaBinding
 import com.oscarsainz.agenda.databinding.FragTareasDetailBinding
 import com.oscarsainz.agenda.model.components.TareaDialog
 import com.oscarsainz.agenda.model.data.Asignatura
 import com.oscarsainz.agenda.model.data.Tarea
+
 
 class DetailTareaFragment : Fragment(R.layout.frag_tareas_detail) {
 
@@ -33,7 +31,6 @@ class DetailTareaFragment : Fragment(R.layout.frag_tareas_detail) {
     private val emailUser = FirebaseAuth.getInstance().currentUser?.email.toString()
 
     private lateinit var binding: FragTareasDetailBinding
-    //private lateinit var bindingDialog: DialogTareaBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,14 +48,19 @@ class DetailTareaFragment : Fragment(R.layout.frag_tareas_detail) {
         }
 
         binding.floatingActionButton3.setOnClickListener {
-            //bindingDialog = DialogTareaBinding.bind()
-            //bindingDialog.botonAgregarDialogo.text = "Modificar"
             TareaDialog(
+                "modificacion",
+                tarea,
                 onSubmitClickListener = {
                     viewModel.modificarTarea(emailUser , asignatura ,tarea, it)
-                    Toast.makeText(requireContext(), getString(R.string.modificacionCompletada), Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(
+                        R.id.detailTareaFragment_self,
+                        bundleOf( EXTRA_TAREA to it , EXTRA_ASIGNATURA to asignatura)
+
+                    )
                 }
             ).show(requireFragmentManager() , "Dialogo Tarea")
+
         }
 
 
