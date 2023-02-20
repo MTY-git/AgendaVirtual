@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="24dp"
         app:cardElevation="0dp"
-        android:background="?attr/colorOnPrimary"
+        android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,9 +55,7 @@
                     android:hint="@string/nombre_tarea"
                     android:inputType="text"
                     android:padding="16dp"
-                    android:textColorHint="#757575"
-                    android:textSize="18sp"
-                    tools:ignore="TextContrastCheck" />
+                    android:textSize="18sp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -82,9 +80,8 @@
                     android:hint="@string/descripcion_de_la_tarea"
                     android:inputType="text"
                     android:padding="16dp"
-                    android:textColorHint="#757575"
-                    android:textSize="18sp"
-                    tools:ignore="TextContrastCheck" />
+                    android:textSize="18sp"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -120,15 +117,12 @@
                 android:gravity="center"
                 android:paddingVertical="16dp"
                 android:text="@string/agregar"
-                android:textColor="#37474F"
                 android:visibility="visible"
                 app:cornerRadius="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_fecha_dialogo"
-                tools:ignore="TextContrastCheck" />
+                app:layout_constraintTop_toBottomOf="@+id/input_fecha_dialogo" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardTarea"
         android:layout_width="350dp"
         android:layout_height="50dp"
@@ -16,7 +15,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/black"
+        app:strokeWidth="@dimen/cardview_compat_inset_shadow">
 
         <TextView
             android:id="@+id/nombreTarea"
@@ -34,6 +35,7 @@
             android:layout_gravity="center_vertical|end"
             android:layout_marginEnd="16dp"
             android:text="@string/fecha_de_entrega"
-            android:textColor="#263238" />
-    </androidx.cardview.widget.CardView>
+            android:textColor="@color/black" />
+
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

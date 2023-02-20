@@ -51,10 +51,12 @@
         android:layout_marginBottom="16dp"
         android:clickable="true"
         android:contentDescription="@string/completada"
+        android:focusable="true"
+        app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_manage"
-        android:focusable="true" />
+        app:rippleColor="@color/blue_light"
+        app:srcCompat="@android:drawable/ic_menu_manage" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch1"

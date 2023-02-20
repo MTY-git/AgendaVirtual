@@ -5,7 +5,7 @@
     <string name="usuario">Usuario</string>
     <string name="contrasenya">Contraseña</string>
     <string name="iniciar_sesion">Iniciar sesion</string>
-    <string name="login">Login</string>
+    <string name="login">LOGIN</string>
     <string name="nombre_de_la_asignatura">Nombre de la Asignatura</string>
     <string name="aceptar">Aceptar</string>
     <string name="tareas">Tareas</string>
@@ -13,9 +13,6 @@
     <string name="nombre_de_la_tarea">Nombre de la tarea</string>
     <string name="descripcion_de_la_tarea">Descripción de la tarea</string>
     <string name="fecha_de_entrega">Fecha de entrega</string>
-    <string name="ver_tareas_urgentes">Ver tareas urgentes</string>
-    <string name="ver_tareas_de_la_semana">Ver tareas de la semana</string>
-    <string name="ver_tareas_sin_fecha_de_entrega">Ver tareas sin fecha de entrega</string>
     <string name="e_mail">E-mail</string>
     <string name="registrarse">Registrarse</string>
     <string name="acceder">Acceder</string>
@@ -26,11 +23,7 @@
     <string name="agregar">Agregar</string>
     <string name="nombre_asignatura">Nombre Asignatura</string>
     <string name="datos_tarea">Datos Tarea</string>
-    <string name="descripci_n_de_la_tarea">descripción de la tarea</string>
     <string name="nombre_tarea">Nombre de la tarea</string>
     <string name="completada">Completada</string>
-    <string name="modificacionCompletada">Modificación realizada, vuelve atrás para ver los cambios</string>
     <string name="cambiar_tema">Cambiar tema</string>
-    <string name="sin_entregar">Sin Entregar</string>
-    <string name="entegada">Entegada</string>
 </resources>

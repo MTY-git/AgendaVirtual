@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/loginLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,32 +9,28 @@
         android:id="@+id/tituloLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="30dp"
         android:text="@string/login"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="343dp"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         android:layout_marginTop="76dp"
-        android:autofillHints=""
-        android:ems="10"
         android:hint="@string/e_mail"
         android:inputType="textEmailAddress"
-        android:minHeight="48dp"
+        android:minHeight="50dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tituloLogin"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -43,54 +38,48 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/contrasenya"
-        android:importantForAutofill="no"
         android:inputType="textPassword"
-        android:minHeight="48dp"
+        android:minHeight="50dp"
         android:textAlignment="center"
-        android:textColorHint="#757575"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditText"
-        app:layout_constraintVertical_bias="0.083" />
+        app:layout_constraintVertical_bias="0.083"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/buttonAcceder"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="45dp"
         android:text="@string/acceder"
-        android:textColor="#37474F"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
 
     <Button
         android:id="@+id/buttonRegistrarse"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:text="@string/registrarse"
-        android:textColor="#37474F"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAcceder" />
 
 
     <Button
         android:id="@+id/googleButton"
-        android:layout_width="268dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="260dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="50dp"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/google"
         android:text="@string/google"
-        android:textColor="#37474F"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonRegistrarse" />
 
