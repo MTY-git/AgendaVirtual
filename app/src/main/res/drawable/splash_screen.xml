@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/purple"/>
+    <item android:drawable="@color/blue"/>
     <item>
         <bitmap
-            android:src="@drawable/splash_screen_icon"
+            android:src="@drawable/app_icon_splash"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
