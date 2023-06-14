@@ -43,7 +43,7 @@ class DetailTareaFragment : Fragment(R.layout.frag_tareas_detail) {
 
 
         binding.switch1.setOnClickListener{
-            tarea.completada = binding.switch1.isChecked
+            tarea.completed = binding.switch1.isChecked
             viewModel.modificarTarea(emailUser , asignatura , tarea , tarea)
         }
 
@@ -76,13 +76,11 @@ class DetailTareaFragment : Fragment(R.layout.frag_tareas_detail) {
     @SuppressLint("SetTextI18n")
     private fun bindingDetail(tarea: Tarea) {
 
-        binding.nombreTareaDetail.text = tarea.nombre
-        binding.fechaEntrega.text = "${tarea.fechaEntrega?.date}/" +
-                                    "${tarea.fechaEntrega?.month?.plus(1)}/" +
-                                    "${tarea.fechaEntrega?.year?.plus(1900)}"
-        binding.descripcionTarea.text = tarea.descripcion
+        binding.nombreTareaDetail.text = tarea.name
+        binding.fechaEntrega.text = tarea.deadline
+        binding.descripcionTarea.text = tarea.description
 
-        binding.switch1.isChecked = tarea.completada
+        binding.switch1.isChecked = tarea.completed
 
     }
 }

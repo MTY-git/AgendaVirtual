@@ -46,15 +46,13 @@ class TareasAdapter(val listener: (Tarea) -> Unit) :
         @SuppressLint("SetTextI18n", "ResourceAsColor")
         fun bind(tarea : Tarea){
 
-            if(tarea.completada){
+            if(tarea.completed){
                 binding.cardTarea.setCardBackgroundColor(Color.LTGRAY)
             }else{
                 binding.cardTarea.setCardBackgroundColor(Color.rgb(121,240,255))
             }
-            binding.nombreTarea.text = tarea.nombre
-            binding.fecha.text = "${tarea.fechaEntrega?.date}/" +
-                                 "${tarea.fechaEntrega?.month?.plus(1)}/" +
-                                 "${tarea.fechaEntrega?.year?.plus(1900)}"
+            binding.nombreTarea.text = tarea.name
+            binding.fecha.text = tarea.deadline
 
         }
     }

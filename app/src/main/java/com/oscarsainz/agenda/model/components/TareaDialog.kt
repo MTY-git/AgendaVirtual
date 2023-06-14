@@ -5,9 +5,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
-import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
@@ -35,13 +33,9 @@ class TareaDialog(
         if (modo.equals("modificacion")) {
 
             binding.botonAgregarDialogo.text = "Modificar"
-            binding.inputNombreDialogo.setText(tarea.nombre)
-            binding.inputDescripcionDialogo.setText(tarea.descripcion)
-            binding.inputFechaDialogo.updateDate(
-                tarea.fechaEntrega!!.year + 1900,
-                tarea.fechaEntrega!!.month + 0,
-                tarea.fechaEntrega!!.date + 0
-            )
+            binding.inputNombreDialogo.setText(tarea.name)
+            binding.inputDescripcionDialogo.setText(tarea.description)
+
         }
 
         binding.botonAgregarDialogo.setOnClickListener {
@@ -52,12 +46,8 @@ class TareaDialog(
                         Tarea(
                             inputNombreDialogo.text.toString(),
                             inputDescripcionDialogo.text.toString(),
-                            Date(
-                                inputFechaDialogo.year - 1900,
-                                inputFechaDialogo.month,
-                                inputFechaDialogo.dayOfMonth
-                            ),
-                            tarea.completada
+                            tarea.deadline,
+                            tarea.completed
                         )
                     )
                     dismiss()

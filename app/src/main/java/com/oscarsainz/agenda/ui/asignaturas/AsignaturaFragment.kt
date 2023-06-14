@@ -50,7 +50,7 @@ class AsignaturaFragment : Fragment(R.layout.frag_asignaturas) {
         val swipeToDeleteCallback = object : SwipeToDeleteCallback(requireContext()){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val nombre = adapter.asignaturas[position].nombre
+                val nombre = adapter.asignaturas[position].name
                 viewModel.borrarAsignatura( emailUser , Asignatura(nombre) )
             }
         }

@@ -8,9 +8,9 @@ import java.util.*
 @Parcelize
 data class Tarea(
 
-    var nombre: String = "",
-    var descripcion: String = "",
-    @ServerTimestamp var fechaEntrega: Date? = null,
-    var completada: Boolean = false
+    var name: String = "",
+    var description: String = "",
+    var deadline: String = "",
+    var completed: Boolean = false
 
 ): Parcelable

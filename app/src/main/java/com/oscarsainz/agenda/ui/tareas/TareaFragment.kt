@@ -1,7 +1,10 @@
 package com.oscarsainz.agenda.ui.tareas
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -21,6 +24,7 @@ import com.oscarsainz.agenda.model.components.TareaDialog
 import com.oscarsainz.agenda.model.data.Tarea
 import com.oscarsainz.agenda.ui.tareas.detail.DetailTareaFragment
 import com.oscarsainz.agenda.ui.tareas.detail.DetailTareaFragment.Companion.EXTRA_TAREA
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TareaFragment : Fragment(R.layout.frag_tareas) {
@@ -43,7 +47,7 @@ class TareaFragment : Fragment(R.layout.frag_tareas) {
         binding = FragTareasBinding.bind(view)
 
         val asignatura = arguments?.getParcelable<Asignatura>(EXTRA_ASIGNATURA)!!
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = asignatura.nombre
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = asignatura.name
 
         binding.recyclerView.adapter = adapter
 
@@ -60,7 +64,7 @@ class TareaFragment : Fragment(R.layout.frag_tareas) {
         val swipeToDeleteCallback = object : SwipeToDeleteCallback(requireContext()){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val nombre = adapter.tareas[position].nombre
+                val nombre = adapter.tareas[position].name
                 viewModel.borrarTarea( emailUser , asignatura , Tarea(nombre) )
             }
         }
@@ -70,12 +74,16 @@ class TareaFragment : Fragment(R.layout.frag_tareas) {
 
         viewModel.state.observe(viewLifecycleOwner){state ->
 
-            lifecycleScope.launch {
+            lifecycleScope.launch(Dispatchers.Main) {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    state.tareas?.collect() {
-                        adapter.tareas = it
-                        adapter.notifyDataSetChanged()
-                    }
+                        state.tareas?.collect() {
+                                if (it.isNotEmpty()) {
+                                    adapter.tareas = it
+                                    adapter.notifyDataSetChanged()
+                                } else {
+                                    print("LISTA DE TAREAS VACIA")
+                                }
+                        }
                 }
             }
 

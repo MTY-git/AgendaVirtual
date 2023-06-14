@@ -6,8 +6,10 @@ import com.oscarsainz.agenda.model.data.Asignatura
 import com.oscarsainz.agenda.model.bd.DbFirestore
 import com.oscarsainz.agenda.model.data.Tarea
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 class TareaViewModel(asignatura: Asignatura): ViewModel() {
@@ -18,11 +20,8 @@ class TareaViewModel(asignatura: Asignatura): ViewModel() {
 
 
     init {
-
-        _state.value = _state.value?.copy( tareas = DbFirestore.getFlowTarea( emailUser, asignatura ))
-
+        _state.value = _state.value?.copy(tareas = DbFirestore.getFlowTarea(emailUser, asignatura))
     }
-
 
     fun navigateTo(tarea: Tarea) {
         _state.value = _state.value?.copy(navigateTo = tarea)

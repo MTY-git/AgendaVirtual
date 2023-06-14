@@ -42,7 +42,7 @@ class AsignaturasAdapter(val listener: (Asignatura) -> Unit) :
         private val binding = ElemAsignaturaBinding.bind(view)
 
         fun bind(asignatura: Asignatura){
-            binding.nombreTarea.text = asignatura.nombre
+            binding.nombreTarea.text = asignatura.name
         }
     }
 }

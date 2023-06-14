@@ -5,6 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Asignatura(
-    var nombre : String = ""
+    var name : String = ""
 ): Parcelable {
 }

@@ -34,7 +34,7 @@ class AsignaturaDialog(
             }else{
                 Toast.makeText(
                     requireContext(),
-                    "Debes introducir el nombre de la asignatura",
+                    "Debes introducir el name de la asignatura",
                     Toast.LENGTH_SHORT
                 ).show()
             }
